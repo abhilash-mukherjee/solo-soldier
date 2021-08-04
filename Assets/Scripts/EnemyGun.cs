@@ -35,8 +35,9 @@ public class EnemyGun : MonoBehaviour
     {
         AggroDetection.OnAggroFire -= AggroDetection_OnAggroFire;
     }
-    private void AggroDetection_OnAggroFire()
+    private void AggroDetection_OnAggroFire(GameObject enemyObject)
     {
+        if(enemyObject == gameObject)
         shouldFire = true;
     }
     public void StopFiringWhenPlayerDies()
@@ -58,7 +59,7 @@ public class EnemyGun : MonoBehaviour
     }
 
     private void FireGun()
-    {
+    {   
         PlayFireAnimation();
         ParticleSystem muzzleFlash = Instantiate(muzzleParticles, gunMuzzlePoint.transform.position, gunMuzzlePoint.transform.rotation );
         AudioManager.Instance.PlaySound("EnemyFire");
@@ -68,10 +69,10 @@ public class EnemyGun : MonoBehaviour
         if (Physics.Raycast(ray,out hitInfo, 100))
         {
             var hitCollider = hitInfo.collider;
-            var health = hitCollider.gameObject.GetComponent<Health>();
-            if (health != null )
+            var playerHealth = hitCollider.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null )
             {
-                    health.TakeDamage(1);
+                    playerHealth.TakeDamage(1);
             }
         }
 

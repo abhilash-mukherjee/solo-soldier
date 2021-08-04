@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     public delegate void HitHandler(GameObject gameObject);
     public delegate void DeathHandler(GameObject gameObject);
@@ -21,20 +21,13 @@ public class Health : MonoBehaviour
         currentHealth -= dmg;
         if (currentHealth <= 0)
         {
-            if(gameObject.CompareTag("Player"))
+
+            GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemyList)
             {
-                GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach(GameObject enemy in enemyList)
-                {
-                    enemy.GetComponent<EnemyGun>().StopFiringWhenPlayerDies();
-                }
+                enemy.GetComponent<EnemyGun>().StopFiringWhenPlayerDies();
             }
-            if (gameObject.CompareTag("Enemy"))
-            {
-               
-                    gameObject.GetComponent<EnemyGun>().StopFiringWhenPlayerDies();
-                
-            }
+            GetComponent<PlayerGun>().StopFiringWhenPlayerDies();
             Die();
             return;
         }

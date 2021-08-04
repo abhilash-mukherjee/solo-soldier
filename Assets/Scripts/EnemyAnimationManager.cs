@@ -9,22 +9,22 @@ public class EnemyAnimationManager : MonoBehaviour
     {
         EnemyDamage.OnEnemyDieAnimationFinishedPlaying += EnemyDamage_OnEnemyDieAnimationFinishedPlaying;
         EnemyDamage.OnEnemyHitAnimationFinishedPlaying += EnemyDamage_OnEnemyHitAnimationFinishedPlaying;
-        Health.OnDied += PlayDeathAnimationOnDied;
-        Health.OnHit += PlayHitAnimationOnHit;
+        EnemyHealth.OnDied += PlayDeathAnimationOnDied;
+        EnemyHealth.OnHit += PlayHitAnimationOnHit;
     }
     private void OnDisable()
     {
         EnemyDamage.OnEnemyDieAnimationFinishedPlaying -= EnemyDamage_OnEnemyDieAnimationFinishedPlaying;
         EnemyDamage.OnEnemyHitAnimationFinishedPlaying -= EnemyDamage_OnEnemyHitAnimationFinishedPlaying;
-        Health.OnDied -= PlayDeathAnimationOnDied;
-        Health.OnHit -= PlayHitAnimationOnHit;
+        EnemyHealth.OnDied -= PlayDeathAnimationOnDied;
+        EnemyHealth.OnHit -= PlayHitAnimationOnHit;
     }
 
     private void PlayHitAnimationOnHit(GameObject passedObject)
     {
-        if(passedObject.CompareTag("Enemy"))
+        if(passedObject == gameObject)
         {
-            AudioManager.Instance.PlaySound("Hit");
+            AudioManager.Instance.PlaySound("EnemyHit");
             gameObject.GetComponentInChildren<Animator>().Play("EnemyHit");
         }
 
@@ -32,22 +32,42 @@ public class EnemyAnimationManager : MonoBehaviour
 
     private void PlayDeathAnimationOnDied(GameObject passedObject)
     {
-        if (passedObject.CompareTag("Enemy"))
+        if (passedObject == gameObject)
         {
-            AudioManager.Instance.PlaySound("Death");
+            AudioManager.Instance.PlaySound("EnemyDeath");
             gameObject.GetComponentInChildren<Animator>().Play("Die");
         }
 
     }
 
-    private void EnemyDamage_OnEnemyHitAnimationFinishedPlaying()
+    private void EnemyDamage_OnEnemyHitAnimationFinishedPlaying(GameObject enemyObject)
     {
-        GetComponentInChildren<Animator>().SetBool("HitEnemy", false);
+        try
+        {
+            if (enemyObject.transform.parent.gameObject == gameObject)
+            {
+                GetComponentInChildren<Animator>().SetBool("HitEnemy", false);
+            }
+        } 
+        catch
+        {
+            return;
+        }
     }
 
-    private void EnemyDamage_OnEnemyDieAnimationFinishedPlaying()
+    private void EnemyDamage_OnEnemyDieAnimationFinishedPlaying(GameObject enemyObject)
     {
-        gameObject.SetActive(false);
+        try
+        {
+            if (enemyObject.transform.parent.gameObject == gameObject)
+            {
+                Destroy(gameObject);
+            }
+        }
+        catch
+        {
+            return;
+        }
     }
 
 }

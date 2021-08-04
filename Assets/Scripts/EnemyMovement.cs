@@ -25,9 +25,13 @@ public class EnemyMovement : MonoBehaviour
     {
         AggroDetection.OnAggro -= AggroDetection_OnAggro;
     }
-    private void AggroDetection_OnAggro(Transform target)
+    private void AggroDetection_OnAggro(Transform target, GameObject whichEnemy)
     {
-        this.target = target;
+        if(whichEnemy == gameObject) // This means that the AggroDetection script attached with this gameObject was triggered
+        {
+            this.target = target;
+        }
+        
         
     }
     private void Update()

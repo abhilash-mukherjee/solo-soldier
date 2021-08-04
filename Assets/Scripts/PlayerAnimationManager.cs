@@ -9,22 +9,22 @@ public class PlayerAnimationManager : MonoBehaviour
     {
         PlayerDamage.OnPlayerDieAnimationFinishedPlaying += PlayerDamage_OnPlayerDieAnimationFinishedPlaying;
         PlayerDamage.OnPlayerHitAnimationFinishedPlaying += PlayerDamage_OnPlayerHitAnimationFinishedPlaying;
-        Health.OnDied += PlayDeathAnimationOnDied;
-        Health.OnHit += PlayHitAnimationOnHit;
+        PlayerHealth.OnDied += PlayDeathAnimationOnDied;
+        PlayerHealth.OnHit += PlayHitAnimationOnHit;
     }
     private void OnDisable()
     {
         PlayerDamage.OnPlayerDieAnimationFinishedPlaying -= PlayerDamage_OnPlayerDieAnimationFinishedPlaying;
         PlayerDamage.OnPlayerHitAnimationFinishedPlaying -= PlayerDamage_OnPlayerHitAnimationFinishedPlaying;
-        Health.OnDied -= PlayDeathAnimationOnDied;
-        Health.OnHit -= PlayHitAnimationOnHit;
+        PlayerHealth.OnDied -= PlayDeathAnimationOnDied;
+        PlayerHealth.OnHit -= PlayHitAnimationOnHit;
     }
 
     private void PlayHitAnimationOnHit(GameObject passedObject)
     {
         if(passedObject.CompareTag("Player"))
         {
-            AudioManager.Instance.PlaySound("Hit");
+            AudioManager.Instance.PlaySound("PlayerHit");
             gameObject.GetComponentInChildren<Animator>().Play("Hit");
         }
 
@@ -34,7 +34,7 @@ public class PlayerAnimationManager : MonoBehaviour
     {
         if (passedObject.CompareTag("Player"))
         {
-            AudioManager.Instance.PlaySound("Death");
+            AudioManager.Instance.PlaySound("PlayerDeath");
             gameObject.GetComponentInChildren<Animator>().Play("Die");
         }
 

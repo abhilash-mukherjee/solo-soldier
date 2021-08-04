@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public delegate void EnemyDeathHandler();
+    public delegate void EnemyDeathHandler(GameObject enemyObject);
     public static event EnemyDeathHandler OnEnemyDieAnimationFinishedPlaying;
-    public delegate void EnemyHitHandler();
+    public delegate void EnemyHitHandler(GameObject enemyObject);
     public static event EnemyHitHandler OnEnemyHitAnimationFinishedPlaying;
     private bool deathStarted = false;
     private bool deathEnd = false;
@@ -14,12 +14,12 @@ public class EnemyDamage : MonoBehaviour
     private float yVelocityDuringDeath;
     public void EnemyDied()
     {
-        OnEnemyDieAnimationFinishedPlaying?.Invoke();
+        OnEnemyDieAnimationFinishedPlaying?.Invoke(gameObject);
         deathEnd = true;
     }
     public void EnemyHit()
     {
-        OnEnemyHitAnimationFinishedPlaying?.Invoke();
+        OnEnemyHitAnimationFinishedPlaying?.Invoke(gameObject);
     }
     public void DeathStarted()
     {

@@ -15,6 +15,18 @@ MonoBehaviour:
   playerParentObject: {fileID: 3644489802828998861}
   yVelocityDuringDeath: 2
   timeToMovePlayerDownwards: 2
+--- !u!114 &4603016896470659630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644489802633208754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6cec7a2e7bfd54e832ea384c7e097d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3644489802828998861
 GameObject:
   m_ObjectHideFlags: 0

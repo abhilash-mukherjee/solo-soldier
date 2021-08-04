@@ -3929,6 +3929,54 @@ MonoBehaviour:
     loop: 0
     name: EnemyHit
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 21c2388956a4dad4b853c22ba69ce7ba, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    name: PlayerStep1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ed45d358d3b552946b1198d93ff2e281, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    name: PlayerStep2
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 708262bd4e3f94e4c85f35c7d64c86d0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    name: PlayerStep3
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b7a90d2096e610746992cbd8358470d4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    name: PlayerStep4
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 21c2388956a4dad4b853c22ba69ce7ba, type: 3}
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    name: EnemyStep1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ed45d358d3b552946b1198d93ff2e281, type: 3}
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    name: EnemyStep2
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 708262bd4e3f94e4c85f35c7d64c86d0, type: 3}
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    name: EnemyStep3
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b7a90d2096e610746992cbd8358470d4, type: 3}
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    name: EnemyStep4
+    source: {fileID: 0}
 --- !u!4 &1385610159
 Transform:
   m_ObjectHideFlags: 0

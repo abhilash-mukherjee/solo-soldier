@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", vertical);
         }
         transform.Rotate(Vector3.up, aim * turnSpeed * Time.deltaTime);
-        if(vertical != 0)
+        if(vertical != 0 && !IsPlaying(animator, "Hit"))
         {
             float speed = (vertical > 0) ? forwardSpeed : backwardSpeed;
             characterController.SimpleMove(vertical * transform.forward * Time.deltaTime * speed);

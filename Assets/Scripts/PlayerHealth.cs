@@ -27,6 +27,12 @@ public class PlayerHealth : MonoBehaviour
             {
                 enemy.GetComponent<EnemyGun>().StopFiringWhenPlayerDies();
             }
+
+            GameObject[] gunShipList = GameObject.FindGameObjectsWithTag("GunShip");
+            foreach (GameObject enemy in enemyList)
+            {
+                enemy.GetComponent<GunShipFire>().StopFiringWhenPlayerDies();
+            }
             GetComponent<PlayerGun>().StopFiringWhenPlayerDies();
             Die();
             return;

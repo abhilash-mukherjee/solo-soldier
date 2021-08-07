@@ -43,6 +43,20 @@ public class AudioManager : MonoBehaviour
         }
         
     }
+    public void PauseSound(string clipName)
+    {
+        var audio = sounds.First(s => s.name.Equals(clipName));
+        if (audio == null)
+        {
+            Debug.LogWarning("Sound Does not exist");
+        }
+        else
+        {
+            if(audio.source.isPlaying)
+            audio.source.Stop();
+        }
+
+    }
     public void PlaySoundOneShot(string clipName)
     {
         var audio = sounds.First(s => s.name.Equals(clipName));

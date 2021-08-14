@@ -160,7 +160,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1721029330051295468}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -31.304346, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.430609e-15, y: 109.5652, z: 6.803678e-16}
 --- !u!33 &4656270680131294307
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1721029330051295468}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 46.956516, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15.652162, y: 0, z: 0}
 --- !u!33 &3808378919894478409
 MeshFilter:
   m_ObjectHideFlags: 0

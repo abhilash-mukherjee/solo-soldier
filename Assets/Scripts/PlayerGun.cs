@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerGun : MonoBehaviour
 {
     [SerializeField]
-    [Range(0.2f, 1.5f)]
+    [Range(0.5f, 1.5f)]
     private float fireRate = 0.3f;
     [SerializeField]
     [Range(1, 10)]
@@ -18,6 +18,8 @@ public class PlayerGun : MonoBehaviour
     ParticleSystem muzzleParticles;
     [SerializeField]
     private float maxFireDistance = 100f;
+    [SerializeField]
+    private int layerToAvoid = 9;
     private Animator animator;
     private bool shouldFire = true;
     
@@ -38,21 +40,28 @@ public class PlayerGun : MonoBehaviour
         }
         
     }
-    public void StopFiringWhenPlayerDies()
+ 
+    public void StopFiring()
     {
         shouldFire = false;
     }
-
+    public void StartFiring()
+    {
+        shouldFire = true;
+    }
     private void FireGun()
     {
         if (shouldFire == false)
             return;
+        DisableShootingAndMotion();
         PlayFireAnimation();
         ParticleSystem muzzleFlash = Instantiate(muzzleParticles, gunMuzzlePoint.transform.position, gunMuzzlePoint.transform.rotation);
         AudioManager.Instance.PlaySound("Fire");
         Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
         Debug.DrawRay(ray.origin, ray.direction * 50, Color.red, 2f);
-        RaycastHit[] hits = Physics.RaycastAll(ray,maxFireDistance); ;
+        int layerMask = 1 << layerToAvoid;
+        layerMask = ~layerMask;
+        RaycastHit[] hits = Physics.RaycastAll(ray,maxFireDistance,layerMask); ;
         foreach(RaycastHit hit in hits)
         {
             Debug.Log(hit.collider.gameObject);
@@ -65,14 +74,21 @@ public class PlayerGun : MonoBehaviour
             {
                 hit.collider.gameObject.transform.parent.gameObject.GetComponent<GunShipHealth>().TakeDamage(damage, hit.point);
             }
+            if (hit.collider.gameObject.CompareTag("Tank"))
+            {
+                hit.collider.gameObject.GetComponent<TankHealth>().TakeDamage(damage, hit.point);
+            }
         }
 
     }
     void PlayFireAnimation()
     {
-        animator.Play("Fire");
+        animator.SetBool("Fire", true);
 
     }
-    
 
+    public void DisableShootingAndMotion()
+    {
+        GetComponent<PlayerMovement>().StopPlayerMovement();
+    }
 }

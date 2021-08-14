@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float backwardSpeed = 100f;
     [SerializeField]
     private float turnSpeed = 200f;
+    private bool shouldMove = true;
 
     void Awake()
     {
@@ -21,9 +22,19 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void StopPlayerMovement()
+    {
+        shouldMove = false;
+    }
+    public void StartPlayerMovement()
+    {
+        shouldMove = true;
+    }
     // Update is called once per frame
     void Update()
     {
+        if (shouldMove == false)
+            return;
         float aim = Input.GetAxis("Mouse X");
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");

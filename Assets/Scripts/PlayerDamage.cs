@@ -30,6 +30,10 @@ public class PlayerDamage : MonoBehaviour
     {
         StartCoroutine(OffsetPlayerWhileDying(timeToMovePlayerDownwards));
     }
+    public void StartFiring()
+    {
+        transform.parent.GetComponent<PlayerGun>().StartFiring();
+    }
 
     IEnumerator OffsetPlayerWhileDying(float time)
     {

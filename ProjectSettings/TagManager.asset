@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - EnemySoldier
   - GunShip
+  - Environment
+  - Tank
+  - Destructible
   layers:
   - Default
   - TransparentFX
@@ -14,10 +17,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - MainGun
+  - Environment
+  - TankShield
   - 
   - 
   - 

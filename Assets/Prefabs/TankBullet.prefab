@@ -78,8 +78,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   environmentLayerIndex: 8
+  GrenaeLayerIndex: 10
   explosionRadius: 5
   explosionForce: 2000
+  damage: 4
+  YOffsetOfTarger: 2
 --- !u!1001 &2517187996018712433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 176630, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
       propertyPath: m_Name
       value: Bullet-7.62 (DarkZinc+v2) LP
+      objectReference: {fileID: 0}
+    - target: {fileID: 183226, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 486674, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
       propertyPath: m_RootOrder

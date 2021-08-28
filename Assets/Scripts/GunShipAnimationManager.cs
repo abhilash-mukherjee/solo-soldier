@@ -9,14 +9,12 @@ public class GunShipAnimationManager : MonoBehaviour
         PlayerDamage.OnPlayerDieAnimationFinishedPlaying += PlayerDamage_OnPlayerDieAnimationFinishedPlaying;
         PlayerDamage.OnPlayerHitAnimationFinishedPlaying += PlayerDamage_OnPlayerHitAnimationFinishedPlaying;
         PlayerHealth.OnDied += PlayDeathAnimationOnDied;
-        PlayerHealth.OnHit += PlayHitAnimationOnHit;
     }
     private void OnDisable()
     {
         PlayerDamage.OnPlayerDieAnimationFinishedPlaying -= PlayerDamage_OnPlayerDieAnimationFinishedPlaying;
         PlayerDamage.OnPlayerHitAnimationFinishedPlaying -= PlayerDamage_OnPlayerHitAnimationFinishedPlaying;
         PlayerHealth.OnDied -= PlayDeathAnimationOnDied;
-        PlayerHealth.OnHit -= PlayHitAnimationOnHit;
     }
 
     private void PlayHitAnimationOnHit(GameObject passedObject)

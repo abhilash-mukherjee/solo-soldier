@@ -64,7 +64,6 @@ public class PlayerGun : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(ray,maxFireDistance,layerMask); ;
         foreach(RaycastHit hit in hits)
         {
-            Debug.Log(hit.collider.gameObject);
             if(hit.collider.gameObject.CompareTag("EnemySoldier"))
             {
                 hit.collider.gameObject.transform.parent.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);

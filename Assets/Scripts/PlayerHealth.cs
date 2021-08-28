@@ -4,8 +4,11 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public delegate void HitHandler(GameObject gameObject);
+    public delegate void PlayerHitHandler(GameObject gameObject, int dmg);
+    public delegate void HealthHandler(GameObject gameObject, int currentHealth, int startingHealth);
+    public static event HealthHandler OnHealthChanged;
     public delegate void DeathHandler(GameObject gameObject);
-    public static event HitHandler OnHit;
+    public static event PlayerHitHandler OnPlayerHit;
     public static event DeathHandler OnDied;
     [SerializeField]
     private int startingHealth = 10;
@@ -28,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
             GetComponent<PlayerGun>().StopFiring();
         }
         currentHealth -= dmg;
+        OnHealthChanged?.Invoke(gameObject, currentHealth, startingHealth);
         Debug.Log("Health = "+ currentHealth);
         if (currentHealth <= 0)
         {
@@ -42,8 +46,8 @@ public class PlayerHealth : MonoBehaviour
             GameObject[] gunShipList = GameObject.FindGameObjectsWithTag("GunShip");
             foreach (GameObject gunShip in gunShipList)
             {
-                if(gunShip.GetComponent<GunShipFire>() != null)
-                    gunShip.GetComponent<GunShipFire>().StopFiringWhenPlayerDies();
+                if(gunShip.GetComponent<GunShipGun>() != null)
+                    gunShip.GetComponent<GunShipGun>().StopFiringWhenPlayerDies();
             }
             
             GameObject[] tankList = GameObject.FindGameObjectsWithTag("Tank");
@@ -56,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
             Die();
             return;
         }
-        OnHit?.Invoke(gameObject);
+        OnPlayerHit?.Invoke(gameObject,dmg);
     }
 
     private void Die()

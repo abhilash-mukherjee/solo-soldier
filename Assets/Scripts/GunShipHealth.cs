@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class GunShipHealth : MonoBehaviour
 {
+    public delegate void GunShipDeathHandler();
+    public static event GunShipDeathHandler OnGunShipDied;
+    public delegate void HealthHandler(GameObject gameObject, int currentHealth, int startingHealth);
+    public static event HealthHandler OnHealthChanged;
+
     [SerializeField]
     private GameObject smokeParticleObject;
     [SerializeField]
@@ -15,7 +20,16 @@ public class GunShipHealth : MonoBehaviour
     private int updateCallsToAchieveSmoothHitAnimation;
     [SerializeField]
     private int startingHealth = 5;
-    private int currentHealth;
+
+
+
+    private int m_currentHealth;
+    public int CurrentHealth
+    {
+        get { return m_currentHealth; }
+    }
+
+
     private ParticleSystem smoke;
     private Transform transformWhenHit;
     private bool shouldSimulateHit = false;
@@ -24,20 +38,37 @@ public class GunShipHealth : MonoBehaviour
     private void Awake()
     {
         smoke = smokeParticleObject.GetComponentInChildren<ParticleSystem>();
-        currentHealth = startingHealth;
+        m_currentHealth = startingHealth;
     }
+
 
     public void TakeDamage(int dmg, Vector3 hitPosition)
     {
-        transformWhenHit = transform;
-        currentHealth -= dmg;
+        transformWhenHit = transform; 
+        m_currentHealth -= dmg;
+        OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
         Instantiate(smoke, hitPosition, Quaternion.identity);
         GetComponent<Animator>().Play("GunshipHit");
         if (shouldSimulateHit == false)
             shouldSimulateHit = true;
-        if (currentHealth <= 0)
+        if (m_currentHealth <= 0)
         {
-            GetComponent<EnemyGun>().StopFiringWhenPlayerDies();
+            GetComponent<GunShipGun>().StopFiringWhenGunShipDies();
+            Die();
+            return;
+        }
+    }
+    public void TakeDamage(int dmg)
+    {
+        transformWhenHit = transform;
+        m_currentHealth -= dmg;
+        OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
+        GetComponent<Animator>().Play("GunshipHit");
+        if (shouldSimulateHit == false)
+            shouldSimulateHit = true;
+        if (m_currentHealth <= 0)
+        {
+            GetComponent<GunShipGun>().StopFiringWhenPlayerDies();
             Die();
             return;
         }
@@ -49,5 +80,6 @@ public class GunShipHealth : MonoBehaviour
 
     private void Die()
     {
+        OnGunShipDied?.Invoke();
     }
 }

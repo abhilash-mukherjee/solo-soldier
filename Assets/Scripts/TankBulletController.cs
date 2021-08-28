@@ -10,6 +10,8 @@ public class TankBulletController : MonoBehaviour
     [SerializeField]
     private int environmentLayerIndex = 8;
     [SerializeField]
+    private int GrenaeLayerIndex = 10;
+    [SerializeField]
     float explosionRadius = 5f;
     [SerializeField]
     float explosionForce = 70f;
@@ -35,9 +37,11 @@ public class TankBulletController : MonoBehaviour
     {
         if (bulletCollided == true)
             return;
-        bulletCollided = true;
-        if(collision.gameObject.layer == environmentLayerIndex || collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Environment")
+            || collision.gameObject.layer == LayerMask.NameToLayer("Player")
+            || collision.gameObject.layer == LayerMask.NameToLayer("Grenade"))
         {
+            bulletCollided = true;
             Explode();
         }
     }

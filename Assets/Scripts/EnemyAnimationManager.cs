@@ -24,7 +24,7 @@ public class EnemyAnimationManager : MonoBehaviour
     {
         if(passedObject == gameObject)
         {
-            AudioManager.Instance.PlaySound("EnemyHit");
+            AudioManager.Instance.PlaySoundOneShot("EnemyHit");
             gameObject.GetComponentInChildren<Animator>().Play("EnemyHit");
         }
 
@@ -34,7 +34,7 @@ public class EnemyAnimationManager : MonoBehaviour
     {
         if (passedObject == gameObject)
         {
-            AudioManager.Instance.PlaySound("EnemyDeath");
+            AudioManager.Instance.PlaySoundOneShot("EnemyDeath");
             gameObject.GetComponentInChildren<Animator>().Play("Die");
         }
 

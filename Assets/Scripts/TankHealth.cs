@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TankHealth : MonoBehaviour
 {
+    public delegate void HealthHandler(GameObject gameObject, int currentHealth, int startingHealth);
+    public static event HealthHandler OnHealthChanged;
     [SerializeField]
     private GameObject parentObject;
     [SerializeField]
@@ -27,7 +29,21 @@ public class TankHealth : MonoBehaviour
     public void TakeDamage(int dmg, Vector3 hitPosition)
     {
         currentHealth -= dmg;
+        OnHealthChanged?.Invoke(gameObject, currentHealth, startingHealth);
         Instantiate(smokeParticleObject, hitPosition, Quaternion.identity);
+        if (shouldSimulateHit == false)
+            shouldSimulateHit = true;
+        if (currentHealth <= 0)
+        {
+            GetComponent<TankGunController>().StopFiringWhenTankDies();
+            Die();
+            return;
+        }
+    }
+    public void TakeDamage(int dmg)
+    {
+        currentHealth -= dmg;
+        OnHealthChanged?.Invoke(gameObject, currentHealth, startingHealth);
         if (shouldSimulateHit == false)
             shouldSimulateHit = true;
         if (currentHealth <= 0)

@@ -36691,21 +36691,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: StopGrenadeToss
+    functionName: DisAllowGrenadeTossSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.8333334
-    functionName: StartMoving
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.8333334
-    functionName: PlayerHit
+    functionName: AllowGrenadeTossSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -36719,7 +36712,21 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.8333334
+    functionName: StartMoving
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.8333334
     functionName: StartGrenadeToss
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.8333334
+    functionName: PlayerHit
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

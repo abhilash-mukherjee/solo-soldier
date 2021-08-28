@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TankMovement : MonoBehaviour
 {
-    [SerializeField]
     private GameObject target;
     [SerializeField]
     private GameObject tankBarrel;
@@ -39,7 +38,11 @@ public class TankMovement : MonoBehaviour
     public bool isMoving = false;
     private float m_VerticalMovement;
     private bool m_ShouldBreak = false;
-    
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
+
 
     [System.Serializable]
     public class WheelProperties

@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunShipFire : MonoBehaviour
+public class GunShipGun : MonoBehaviour
 {
     [SerializeField]
     [Range(0.2f,10f)]
     private float fireRate = 2f;
     [SerializeField]
     [Range(1,10)]
-    private int damage;
+    private int damage = 2;
+    [SerializeField]
+    private float maxFireDistance = 200f;
     [SerializeField]
     GameObject gunMuzzlePoint;
     [SerializeField]
@@ -33,6 +35,10 @@ public class GunShipFire : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
     public void StopFiringWhenPlayerDies()
+    {
+        shouldFire = false;
+    }
+    public void StopFiringWhenGunShipDies()
     {
         shouldFire = false;
     }
@@ -73,12 +79,19 @@ public class GunShipFire : MonoBehaviour
     IEnumerator FireAfterPause(float time)
     {
         yield return new WaitForSeconds(time);
-        Ray ray = new Ray(firePoint.transform.position, gameObject.transform.forward);
+        Ray ray = new Ray(firePoint.transform.position, gameObject.transform.forward * maxFireDistance);
         Debug.DrawRay(ray.origin, ray.direction * 50, Color.red, 2f);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, 100))
+        RaycastHit[] m_hitInfo;
+        m_hitInfo = Physics.RaycastAll(ray,maxFireDistance, LayerMask.GetMask("Player"));
+        if (m_hitInfo.Length == 0)
         {
-            var hitCollider = hitInfo.collider;
+            Debug.Log("Hit Nothing");
+            yield return null;
+        }
+        else if (m_hitInfo[0].collider.gameObject.CompareTag("Player"))
+        {
+            Debug.Log(m_hitInfo[0].collider.gameObject);
+            var hitCollider = m_hitInfo[0].collider;
             var playerHealth = hitCollider.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {

@@ -42,5 +42,11 @@ public class PlayerGrenadeCounter : MonoBehaviour
         OnGrenadeCountChanged?.Invoke(grenadeCount);
     }
 
+    public void SetGrenadeCount(int _count)
+    {
+        grenadeCount = _count;
+        OnGrenadeCountChanged?.Invoke(grenadeCount);
+    }
+
     
 }

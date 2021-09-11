@@ -49,6 +49,8 @@ public class LevelSpriteFillController : MonoBehaviour
     }
     public void ActivateLevel()
     {
+        if(lineFill != null)
+            GetComponent<Button>().interactable = false;
         m_activateLevel = true;
         m_shouldFillLine = true;
     }

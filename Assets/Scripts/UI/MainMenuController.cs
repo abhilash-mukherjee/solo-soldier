@@ -15,13 +15,16 @@ public class MainMenuController : MonoBehaviour
     private bool m_isLastBattleWon;
     private bool m_menuBarScaleCompleted = false;
     private bool m_levelSpritesFilled = false;
-    private void Awake()
+    private void Start()
     {
         menuBoard.transform.localScale = Vector3.zero;
         levelBoard.transform.localScale = Vector3.zero;
         m_highestLevelAchieved = GameManager.Instance.highestLevelAchieved;
         m_isLastBattleWon = GameManager.Instance.isLastBattleWon;
-        
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].GetComponent<LevelSpriteFillController>().LevelIsInactive();
+        }
 
     }
     private void Update()

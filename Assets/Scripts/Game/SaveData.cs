@@ -6,6 +6,9 @@ using UnityEngine;
 public class SaveData 
 {
     public int m_grenadeCount;
+    public bool m_isLastBattleWon;
+    public int m_highestLevelAchieved;
+    public string m_levelPlayedWhileQuitting;
     public string ToJson()
     {
         return JsonUtility.ToJson(this);

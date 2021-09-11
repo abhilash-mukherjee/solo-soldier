@@ -2441,7 +2441,7 @@ MonoBehaviour:
   - {fileID: 1655588653104892781}
   menuBoard: {fileID: 1655588654039965935}
   levelBoard: {fileID: 1655588653737586922}
-  lerpSpeed: 10
+  lerpSpeed: 30
 --- !u!1 &1655588654197789447
 GameObject:
   m_ObjectHideFlags: 0

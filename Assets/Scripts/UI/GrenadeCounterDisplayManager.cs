@@ -9,7 +9,7 @@ public class GrenadeCounterDisplayManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI grenadeCount;
     private int m_grenadeCount = 0;
-    private void Awake()
+    private void Start()
     {
         m_grenadeCount = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerGrenadeCounter>().GrenadeCount;
         SetText();

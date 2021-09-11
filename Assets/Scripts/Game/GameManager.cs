@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour, ISavable
     public int highestLevelAchieved = 0;
     public bool isLastBattleWon;
     private int m_enemyCount = 0;
+    [HideInInspector]
     public int currentGrenadeCout = 0;
+    [SerializeField]
+    private int startingGrenadeount = 5;
 
     [System.Serializable]
     public struct Level
@@ -46,10 +49,12 @@ public class GameManager : MonoBehaviour, ISavable
             Instance = this;
         }
         DontDestroyOnLoad(gameObject);
+        
     }
 
     private void Start()
     {
+        
         LoadGameData();
         if(SceneManager.GetActiveScene().name != MAIN_MENU)
         {
@@ -78,6 +83,7 @@ public class GameManager : MonoBehaviour, ISavable
 
     private void OnApplicationQuit()
     {
+        
         SaveGameData(); 
     }
 
@@ -165,6 +171,7 @@ public class GameManager : MonoBehaviour, ISavable
     }
     private void SaveGameData()
     {
+        GetGrenadeCount();
         SaveData _saveData = new SaveData();
         PopulateSaveData(_saveData);
     }
@@ -172,12 +179,39 @@ public class GameManager : MonoBehaviour, ISavable
     {
         SaveData _saveData = new SaveData();
         LoadFromSaveData(_saveData);
+        if (_saveData.m_levelPlayedWhileQuitting == null)
+        {
+            Debug.Log("This is first gamePlay");
+            SetDefaultValues();
+            return;
+        }
         this.currentGrenadeCout = _saveData.m_grenadeCount;
+        this.isLastBattleWon = _saveData.m_isLastBattleWon;
+        this.highestLevelAchieved = _saveData.m_highestLevelAchieved;
+        SceneManager.LoadScene(_saveData.m_levelPlayedWhileQuitting);
+        var _player = GameObject.FindGameObjectWithTag("Player");
+        if (_player != null)
+        {
+            _player.GetComponent<PlayerGrenadeCounter>().SetGrenadeCount(currentGrenadeCout);
+        }
+    }
+
+    private void SetDefaultValues()
+    {
+        currentGrenadeCout = startingGrenadeount;
+        var _playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (_playerObj != null)
+        {
+            _playerObj.GetComponent<PlayerGrenadeCounter>().SetGrenadeCount(currentGrenadeCout);
+        }
     }
 
     public void PopulateSaveData(SaveData _saveData)
     {
         _saveData.m_grenadeCount = currentGrenadeCout;
+        _saveData.m_isLastBattleWon = isLastBattleWon;
+        _saveData.m_highestLevelAchieved = highestLevelAchieved;
+        _saveData.m_levelPlayedWhileQuitting = SceneManager.GetActiveScene().name;
         string _json = _saveData.ToJson();
         FileManager.WriteToFile("SaveData.dat", _json);
 

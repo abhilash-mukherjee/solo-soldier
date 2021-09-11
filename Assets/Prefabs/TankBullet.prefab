@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8235098617187236978}
   - component: {fileID: 8235098617187236977}
   - component: {fileID: 8235098617187236976}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TankBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,13 +90,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6615098950069450883}
     m_Modifications:
+    - target: {fileID: 1593591274471360, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1973075987484898, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
       propertyPath: m_Name
       value: FlameStream
       objectReference: {fileID: 0}
+    - target: {fileID: 1973075987484898, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4317874184272834, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4317874184272834, guid: bccc7a794e75b2a44a4b0dac69160b7b, type: 3}
       propertyPath: m_LocalScale.x
@@ -171,13 +179,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8235098617187236979}
     m_Modifications:
+    - target: {fileID: 119412, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 123118, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 176630, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
       propertyPath: m_Name
       value: Bullet-7.62 (DarkZinc+v2) LP
       objectReference: {fileID: 0}
+    - target: {fileID: 176630, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 183226, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 183350, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 486674, guid: 3c6265c3391baee4c93fd1c381f3d962, type: 3}
       propertyPath: m_RootOrder

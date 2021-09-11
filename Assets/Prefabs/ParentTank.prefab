@@ -402,16 +402,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993251764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.49}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.32666683}
+  m_LocalScale: {x: 3.3333335, y: 3.3333335, z: 3.3333335}
   m_Children:
   - {fileID: 1533948942}
-  m_Father: {fileID: 4397053115607502595}
-  m_RootOrder: 2
+  m_Father: {fileID: 1221056662538918665}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 10.4}
+  m_AnchoredPosition: {x: 0, y: 6.933333}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1993251769
@@ -535,7 +535,6 @@ Transform:
   m_Children:
   - {fileID: 6134832696654966986}
   - {fileID: 1221056662538918665}
-  - {fileID: 1993251765}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -555,7 +554,7 @@ GameObject:
   - component: {fileID: 1488916863}
   m_Layer: 9
   m_Name: TankShield
-  m_TagString: Untagged
+  m_TagString: TankShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

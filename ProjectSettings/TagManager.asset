@@ -11,6 +11,7 @@ TagManager:
   - Tank
   - Destructible
   - Grenade
+  - TankShield
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - TankShield
   - Grenade
   - Enemy
-  - 
-  - 
+  - TankBullet
+  - Key
   - 
   - 
   - 

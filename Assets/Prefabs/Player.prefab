@@ -641,9 +641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b43958670c2d44aab99cea401563de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 650
-  backwardSpeed: 400
-  turnSpeed: 400
+  forwardSpeed: 200
+  backwardSpeed: 100
+  turnSpeed: 200
 --- !u!114 &3644489802828998857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,6 +662,7 @@ MonoBehaviour:
   muzzleParticles: {fileID: 198792769130808804, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
   maxFireDistance: 40
   layerToAvoid: 9
+  dustParticles: {fileID: 2451282798898550951, guid: e1218f0d1839da64483da89359c07ffc, type: 3}
 --- !u!136 &3644489802828998856
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -713,7 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bebd3cfb31b0654f97eaa2eda81655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grenadeTossRate: 4
+  grenadeTossRate: 5
   damage: 1
   maxGrenadeTossDistance: 100
   layerToAvoid: 9
@@ -746,7 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa9ecfc5bde409498d951f9807d746f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grenadeCount: 10
+  grenadeCount: 5
 --- !u!1 &3644489803033366498
 GameObject:
   m_ObjectHideFlags: 0

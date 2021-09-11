@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   grenadeExplosionTime: 2
-  explosionForce: 70
-  explosionRadius: 2
+  explosionForce: 30000
+  explosionRadius: 20
+  environmentExplosionRadius: 6
   damage: 4
 --- !u!114 &7985042811416043215
 MonoBehaviour:

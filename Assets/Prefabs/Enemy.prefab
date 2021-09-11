@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 189662207}
   - component: {fileID: 189662208}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 237001765}
   - component: {fileID: 237001764}
   - component: {fileID: 237001763}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 778550501}
   - component: {fileID: 778550503}
   - component: {fileID: 778550502}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 970787524}
   - component: {fileID: 970787526}
   - component: {fileID: 970787525}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 1443946358}
   - component: {fileID: 1443946360}
   - component: {fileID: 1443946359}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8138708839432724093}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8138708839571795033}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FlashPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 8138708840356526385}
   - component: {fileID: 1668746717}
   - component: {fileID: 1139853277}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -665,6 +665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a4ee9f3204d9045b3febd828de4a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDistOfSeperation: 10
+  minDistOfSeperation: 3
 --- !u!195 &8138708840356526348
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -713,6 +715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 3
   damage: 2
+  hitForce: 50
   gunMuzzlePoint: {fileID: 8138708839571795032}
   firePoint: {fileID: 8138708839432724092}
   muzzleParticles: {fileID: 198792769130808804, guid: 567e7582856713c49bd2ba5c0dce154e, type: 3}
@@ -755,20 +758,124 @@ PrefabInstance:
     m_TransformParent: {fileID: 8138708840356526346}
     m_Modifications:
     - target: {fileID: 100000, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100032, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100036, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 100036, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100038, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100042, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100044, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100050, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 100050, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_IsActive
@@ -777,6 +884,10 @@ PrefabInstance:
     - target: {fileID: 100052, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_Name
       value: ToonSoldier_WW2_demo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100052, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 100052, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_IsActive

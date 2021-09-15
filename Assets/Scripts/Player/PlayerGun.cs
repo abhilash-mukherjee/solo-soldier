@@ -91,7 +91,6 @@ public class PlayerGun : MonoBehaviour
                 if (_hitObject.GetComponent<Destructible>() != null)
                 {
                     OnEnvironmentHit?.Invoke(_hitObject, hit.point, hitForce * ray.direction);
-                    Debug.Log("Destructible is Hit : " + _hitObject);
                 }
                 else
                 {

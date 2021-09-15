@@ -16,6 +16,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private int startingHealth = 5;
     private int m_currentHealth;
+    public int CurrentHealth
+    {
+        get { return m_currentHealth; }
+        set { 
+            m_currentHealth = value;
+            OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
+        }
+    }
 
     private void Awake()
     {

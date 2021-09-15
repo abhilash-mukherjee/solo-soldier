@@ -8,7 +8,7 @@ public class KeySpawner : MonoBehaviour
     [SerializeField]
     private GameObject keyPrefab;
     [SerializeField]
-    private Vector3 keySpanPosition;
+    private Vector3 keySpawnPosition;
     private void OnEnable()
     {
         GameManager.OnLevelFinished += SpawnKey;
@@ -21,6 +21,6 @@ public class KeySpawner : MonoBehaviour
 
     private void SpawnKey()
     {
-        Instantiate(keyPrefab, keySpanPosition, Quaternion.identity);
+        Instantiate(keyPrefab, keySpawnPosition, Quaternion.identity);
     }
 }

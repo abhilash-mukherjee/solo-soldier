@@ -877,6 +877,7 @@ GameObject:
   - component: {fileID: 2125558046026390532}
   - component: {fileID: 6292510313837647863}
   - component: {fileID: 5461893137084353911}
+  - component: {fileID: 6285893430473153448}
   m_Layer: 0
   m_Name: Gunship
   m_TagString: GunShip
@@ -958,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 5
   damage: 3
+  hitForce: 50
   maxFireDistance: 200
   gunMuzzlePoint: {fileID: 70203465}
   firePoint: {fileID: 70203465}
@@ -1012,3 +1014,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   explosionTime: 1
+--- !u!114 &6285893430473153448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335255037235841744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c64111578b45746a76fd1a12bb0511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

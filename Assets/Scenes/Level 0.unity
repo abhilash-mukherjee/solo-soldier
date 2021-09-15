@@ -224,6 +224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7002813235188774647, guid: f1a1d203dc6a734409ce9d83d145ee0b, type: 3}
+      propertyPath: m_uID
+      value: Enemy1_Level0
+      objectReference: {fileID: 0}
     - target: {fileID: 778550501, guid: f1a1d203dc6a734409ce9d83d145ee0b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -896,10 +900,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 853553270}
-    - target: {fileID: 3644489802828998857, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
-      propertyPath: hitForce
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 3644489802828998858, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -943,18 +943,6 @@ PrefabInstance:
     - target: {fileID: 3644489802828998858, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3644489802828998860, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
-      propertyPath: turnSpeed
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 3644489802828998860, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
-      propertyPath: forwardSpeed
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 3644489802828998860, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
-      propertyPath: backwardSpeed
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3644489802828998861, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
       propertyPath: m_Name

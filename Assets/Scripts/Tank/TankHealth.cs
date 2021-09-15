@@ -6,8 +6,10 @@ public class TankHealth : MonoBehaviour
 {
     public delegate void HealthHandler(GameObject gameObject, int currentHealth, int startingHealth);
     public static event HealthHandler OnHealthChanged;
-    public delegate void TankDeathHandler();
-    public static event TankDeathHandler OnTankDied;
+    public delegate void TankDeathHandler(GameObject _gameObject);
+    public static event TankDeathHandler OnDied;
+    public delegate void DeathHandler();
+    public static event DeathHandler OnTankDied;
     [SerializeField]
     private GameObject parentObject;
     [SerializeField]
@@ -18,11 +20,18 @@ public class TankHealth : MonoBehaviour
     private Vector3 destroyParticleScale = new Vector3(2f,2f,2f);
     [SerializeField]
     private int startingHealth = 30;
-    private int currentHealth;
+    private int m_currentHealth;
+    public int CurrentHealth
+    {
+        get { return m_currentHealth; }
+        set { m_currentHealth = value;
+            OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
+        }
+    }
     private bool shouldSimulateHit = false;
     private void Awake()
     {
-        currentHealth = startingHealth;
+        m_currentHealth = startingHealth;
     }
     private void OnDestroy()
     {
@@ -30,32 +39,32 @@ public class TankHealth : MonoBehaviour
     }
     public void TakeDamage(int dmg, Vector3 hitPosition)
     {
-        currentHealth -= dmg;
-        OnHealthChanged?.Invoke(gameObject, currentHealth, startingHealth);
+        m_currentHealth -= dmg;
+        OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
         Instantiate(smokeParticleObject, hitPosition, Quaternion.identity);
         if (shouldSimulateHit == false)
             shouldSimulateHit = true;
-        if (currentHealth <= 0)
+        if (m_currentHealth <= 0)
         {
             GetComponent<TankGunController>().StopFiringWhenTankDies();
             Die();
             return;
         }
-        Debug.Log("Tank Health: " + currentHealth);
+        Debug.Log("Tank Health: " + m_currentHealth);
     }
     public void TakeDamage(int dmg)
     {
-        currentHealth -= dmg;
-        OnHealthChanged?.Invoke(gameObject, currentHealth, startingHealth);
+        m_currentHealth -= dmg;
+        OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
         if (shouldSimulateHit == false)
             shouldSimulateHit = true;
-        if (currentHealth <= 0)
+        if (m_currentHealth <= 0)
         {
             GetComponent<TankGunController>().StopFiringWhenTankDies();
             Die();
             return;
         }
-        Debug.Log("Tank Health: " + currentHealth);
+        Debug.Log("Tank Health: " + m_currentHealth);
     }
 
     private void Die()
@@ -65,6 +74,7 @@ public class TankHealth : MonoBehaviour
         AudioManager.Instance.PlaySoundOneShot("TankDestroy");
         GetComponent<TankGunController>().StopFiringWhenTankDies();
         Destroy(gameObject);
-        OnTankDied?.Invoke();    
+        OnTankDied?.Invoke();
+        OnDied?.Invoke(gameObject);    
     }
 }

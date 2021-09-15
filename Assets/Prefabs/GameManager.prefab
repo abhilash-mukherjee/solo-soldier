@@ -48,6 +48,7 @@ MonoBehaviour:
   highestLevelAchieved: 0
   isLastBattleWon: 0
   currentGrenadeCout: 5
+  startingGrenadeount: 5
   levelNames:
   - levelName: Level 0
     levelIndex: 0
@@ -72,4 +73,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyPrefab: {fileID: 374289202576707483, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
-  keySpanPosition: {x: -54.2, y: 1.4, z: -28.35}
+  keySpawnPosition: {x: -54.5, y: 1.53, z: -17.640064}

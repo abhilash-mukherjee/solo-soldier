@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GunShipHealth : MonoBehaviour
 {
+    public delegate void DeathHandler(GameObject _gameObject);
+    public static event DeathHandler OnDied;
     public delegate void GunShipDeathHandler();
     public static event GunShipDeathHandler OnGunShipDied;
     public delegate void HealthHandler(GameObject gameObject, int currentHealth, int startingHealth);
@@ -27,6 +29,9 @@ public class GunShipHealth : MonoBehaviour
     public int CurrentHealth
     {
         get { return m_currentHealth; }
+        set { m_currentHealth = value;
+            OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
+        }
     }
 
 
@@ -80,6 +85,7 @@ public class GunShipHealth : MonoBehaviour
 
     private void Die()
     {
+        OnDied?.Invoke(gameObject);
         OnGunShipDied?.Invoke();
     }
 }

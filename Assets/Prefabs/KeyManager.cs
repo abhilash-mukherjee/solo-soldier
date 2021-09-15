@@ -8,12 +8,12 @@ public class KeyManager : MonoBehaviour
     private float angularSpeed = 10f;
     [SerializeField]
     private string KEY_SOUND;
-    private Vector3 m_rotation;
+    private Vector3 m_rotationVector;
     
     private void Update()
     {
-        m_rotation = new Vector3(0f, 0f,Time.deltaTime * angularSpeed);
-        transform.Rotate(m_rotation);
+        m_rotationVector = new Vector3(0f, 0f,Time.deltaTime * angularSpeed);
+        transform.Rotate(m_rotationVector);
     }
 
     private void OnTriggerEnter(Collider other)

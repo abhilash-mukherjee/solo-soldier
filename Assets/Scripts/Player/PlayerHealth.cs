@@ -8,22 +8,28 @@ public class PlayerHealth : MonoBehaviour
     public delegate void HealthHandler(GameObject gameObject, int currentHealth, int startingHealth);
     public static event HealthHandler OnHealthChanged;
     public delegate void DeathHandler(GameObject gameObject);
+    public delegate void PlayerDeathHandler();
     public static event PlayerHitHandler OnPlayerHit;
     public static event DeathHandler OnDied;
+    public static event PlayerDeathHandler OnPlayerDied;
     public delegate void GrenadeCountHandler(int _grenadeCount);
     public static event GrenadeCountHandler OnDied_GrenadeCount;
     [SerializeField]
     private int startingHealth = 10;
-    private int currentHealth;
+    private int m_currentHealth;
     [HideInInspector]
     public int CurrentHealth
     {
-        get { return currentHealth; }
+        get { return m_currentHealth; }
+        set { 
+            m_currentHealth = value;
+            OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
+        }
     }
 
     private void Awake()
     {
-        currentHealth = startingHealth;
+        m_currentHealth = startingHealth;
     }
 
     public void TakeDamage( int dmg)
@@ -32,9 +38,9 @@ public class PlayerHealth : MonoBehaviour
         {
             GetComponent<PlayerGun>().StopFiring();
         }
-        currentHealth -= dmg;
-        OnHealthChanged?.Invoke(gameObject, currentHealth, startingHealth);
-        if (currentHealth <= 0)
+        m_currentHealth -= dmg;
+        OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
+        if (m_currentHealth <= 0)
         {
             GetComponent<PlayerMovement>().StopPlayerMovement();
             GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
@@ -68,5 +74,6 @@ public class PlayerHealth : MonoBehaviour
     {
         OnDied_GrenadeCount?.Invoke(gameObject.GetComponent<PlayerGrenadeCounter>().GrenadeCount);
         OnDied?.Invoke(gameObject);
+        OnPlayerDied?.Invoke();
     }
 }

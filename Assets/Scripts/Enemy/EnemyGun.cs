@@ -67,16 +67,19 @@ public class EnemyGun : MonoBehaviour
         PlayFireAnimation();
         ParticleSystem muzzleFlash = Instantiate(muzzleParticles, gunMuzzlePoint.transform.position, gunMuzzlePoint.transform.rotation );
         AudioManager.Instance.PlaySound("EnemyFire");
-        Ray ray = new Ray(firePoint.transform.position, gameObject.transform.forward);
+        GameObject _player = GameObject.FindGameObjectWithTag("Player");
+        if (_player == null)
+            return;
+        Ray ray = new Ray(firePoint.transform.position, _player.transform.position - transform.position);
         Debug.DrawRay(ray.origin, ray.direction * 50, Color.red, 2f);
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray,out hitInfo, 100))
+        if (Physics.Raycast(firePoint.transform.position, ray.direction, out hitInfo, 100, LayerMask.GetMask("Player", "Environment"))) 
         {
             var hitCollider = hitInfo.collider;
             var playerHealth = hitCollider.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null )
             {
-                    playerHealth.TakeDamage(damage);
+                playerHealth.TakeDamage(damage);
             }
             else if(hitCollider.gameObject.GetComponent<Destructible>()!=null)
             {

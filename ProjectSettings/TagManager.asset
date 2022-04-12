@@ -12,6 +12,8 @@ TagManager:
   - Destructible
   - Grenade
   - TankShield
+  - GunShipTimer
+  - GunShipSpawner
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - Enemy
   - TankBullet
   - Key
-  - 
+  - Barrier
   - 
   - 
   - 

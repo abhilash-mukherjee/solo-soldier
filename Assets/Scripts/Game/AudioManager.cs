@@ -7,7 +7,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public List<Sound> sounds;
-
+    [SerializeField]
+    private string backgroundMusicName;
     private void Awake()
     {
         if(Instance == null)
@@ -30,6 +31,11 @@ public class AudioManager : MonoBehaviour
 
         }
     }
+
+    void Start()
+    {
+        PlaySound(backgroundMusicName);
+    }
     public void PlaySound(string clipName)
     {
         var audio = sounds.First(s => s.name.Equals(clipName));
@@ -47,6 +53,10 @@ public class AudioManager : MonoBehaviour
     {
         var audio = sounds.First(s => s.name.Equals(clipName));
         if (audio == null)
+        {
+            Debug.LogWarning("Sound Does not exist");
+        }
+        else if (audio.source == null)
         {
             Debug.LogWarning("Sound Does not exist");
         }

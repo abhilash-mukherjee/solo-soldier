@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 5466a35d3ac1df44fad460c846a7ce1f, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2236ca7887144dd4bafc9b76c5279642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensetivity: 1
+  sensetivity: 60
   maxYCamera: 7
   minYCamera: -1
 --- !u!4 &1468197333 stripped
@@ -787,14 +787,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 286311286424296237, guid: 9e6d0494594270e4b80f8a4caf278258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 965189657684648432, guid: 9e6d0494594270e4b80f8a4caf278258, type: 3}
       propertyPath: m_Name
       value: GameCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 965189657684648435, guid: 9e6d0494594270e4b80f8a4caf278258, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 853553270}
     - target: {fileID: 965189657684648436, guid: 9e6d0494594270e4b80f8a4caf278258, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -879,6 +879,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3023626010346234021, guid: 9e6d0494594270e4b80f8a4caf278258, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e6d0494594270e4b80f8a4caf278258, type: 3}
 --- !u!1001 &3644489803592171807
@@ -944,6 +948,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3644489802828998860, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
+      propertyPath: isGamePaused
+      value: 
+      objectReference: {fileID: 11400000, guid: a4249fac27446df41bc83590615236e2, type: 2}
     - target: {fileID: 3644489802828998861, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
       propertyPath: m_Name
       value: Player

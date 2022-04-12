@@ -506,6 +506,22 @@ MonoBehaviour:
   destroyParticleObject: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   destroyParticleScale: {x: 2, y: 2, z: 2}
   startingHealth: 30
+--- !u!114 &6050080391391345683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217221658726627967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e5aacc9b9d8f84d8c92ec28d315f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_uID: 
+  m_health: 0
+  m_position: {x: 0, y: 0, z: 0}
+  m_rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4217339860917386869
 GameObject:
   m_ObjectHideFlags: 0

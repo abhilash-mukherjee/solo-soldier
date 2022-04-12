@@ -9,6 +9,7 @@ public class KeySpawner : MonoBehaviour
     private GameObject keyPrefab;
     [SerializeField]
     private Vector3 keySpawnPosition;
+    public static bool isKeySpawned = false;
     private void OnEnable()
     {
         GameManager.OnLevelFinished += SpawnKey;
@@ -22,5 +23,6 @@ public class KeySpawner : MonoBehaviour
     private void SpawnKey()
     {
         Instantiate(keyPrefab, keySpawnPosition, Quaternion.identity);
+        isKeySpawned = true;
     }
 }

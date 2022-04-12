@@ -44,7 +44,7 @@ public class CameraController : MonoBehaviour
         if (m_stopCameraRotation)
             return;
         float vertical = Input.GetAxis("Mouse Y") * sensetivity;
-        composer.m_TrackedObjectOffset.y += vertical;
+        composer.m_TrackedObjectOffset.y += vertical * Time.deltaTime;
         composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y, minYCamera, maxYCamera);
     }
 }

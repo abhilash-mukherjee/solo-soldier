@@ -25,7 +25,11 @@ public class TankData : CharacterData, ISavable
                         gameObject.GetComponent<TankHealth>().CurrentHealth = _characterData.m_health;
                         if (_characterData.m_health == 0)
                         {
+                            gameObject.SetActive(false);
+                            var _parent = transform.parent.gameObject;
                             Destroy(gameObject);
+                            _parent.gameObject.SetActive(false);
+                            Destroy(_parent);
                             Debug.Log($"{gameObject.name } destroyed");
                         }
                     }

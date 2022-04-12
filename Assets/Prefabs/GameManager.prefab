@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5536263070936565011}
   - component: {fileID: 5536263070936565010}
   - component: {fileID: 627314814}
+  - component: {fileID: 296102878999251551}
+  - component: {fileID: 4584707358720377790}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCheckTimeGap: 2
+  playerCheckTimeGap: 1
+  boolVariable: {fileID: 11400000, guid: a4249fac27446df41bc83590615236e2, type: 2}
   highestLevelAchieved: 0
   isLastBattleWon: 0
   currentGrenadeCout: 5
@@ -74,3 +78,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyPrefab: {fileID: 374289202576707483, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
   keySpawnPosition: {x: -54.5, y: 1.53, z: -17.640064}
+--- !u!114 &296102878999251551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536263070936565020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85dc6103967c10d41a7079e531626e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpPrefab: {fileID: 5962808308796842154, guid: a847b1efff4118d40bb150789e5937e0, type: 3}
+  powerUpYPosition: 1.7
+  powerUpXPosition: -52.71
+  healthBoost: 30
+--- !u!114 &4584707358720377790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536263070936565020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee692f23e7dcad443873db2ae6682627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenueSceneIndex: 0

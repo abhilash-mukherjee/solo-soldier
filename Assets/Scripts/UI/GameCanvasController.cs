@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameCanvasController : MonoBehaviour
 {
+    public static List<GameObject> CanvasList= new List<GameObject>();
     [SerializeField]
     GameObject targetSprite, grenadeCounter, grenadeTimer, gameOverText, mainMenuButton, successText;
     [SerializeField]
@@ -27,11 +28,13 @@ public class GameCanvasController : MonoBehaviour
     {
         GameManager.OnGameOver += LoadGameOver;
         GameManager.OnLevelFinished += LoadSuccessMessege;
+        CanvasList.Add(this.gameObject);
     }
     private void OnDisable()
     {
         GameManager.OnGameOver -= LoadGameOver;
         GameManager.OnLevelFinished -= LoadSuccessMessege;
+        CanvasList.Remove(this.gameObject);
         
     }
 

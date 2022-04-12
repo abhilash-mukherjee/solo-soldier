@@ -21,8 +21,21 @@ public class PlayerHealth : MonoBehaviour
     public int CurrentHealth
     {
         get { return m_currentHealth; }
-        set { 
-            m_currentHealth = value;
+        set
+        {
+            if (value >= 100)
+            {
+                m_currentHealth = 100;
+            }
+            else if (value <= 0)
+            {
+                m_currentHealth = 0;
+            }
+            else
+            {
+                m_currentHealth = value;
+
+            }
             OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
         }
     }
@@ -31,15 +44,23 @@ public class PlayerHealth : MonoBehaviour
     {
         m_currentHealth = startingHealth;
     }
-
-    public void TakeDamage( int dmg)
+    private void Start()
     {
-        if(dmg > 2)
+        Debug.Log($"Player health = {m_currentHealth}");
+        
+    }
+    private void OnDestroy()
+    {
+        Debug.Log("Inside OnDestroy of player");
+    }
+    public void TakeDamage(int dmg)
+    {
+        if (dmg > 2)
         {
             GetComponent<PlayerGun>().StopFiring();
         }
         m_currentHealth -= dmg;
-        OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
+        
         if (m_currentHealth <= 0)
         {
             GetComponent<PlayerMovement>().StopPlayerMovement();
@@ -53,21 +74,22 @@ public class PlayerHealth : MonoBehaviour
             GameObject[] gunShipList = GameObject.FindGameObjectsWithTag("GunShip");
             foreach (GameObject gunShip in gunShipList)
             {
-                if(gunShip.GetComponent<GunShipGun>() != null)
+                if (gunShip.GetComponent<GunShipGun>() != null)
                     gunShip.GetComponent<GunShipGun>().StopFiringWhenPlayerDies();
             }
-            
+
             GameObject[] tankList = GameObject.FindGameObjectsWithTag("Tank");
             foreach (GameObject tank in tankList)
             {
-                if(tank.GetComponent<TankGunController>() != null)
+                if (tank.GetComponent<TankGunController>() != null)
                     tank.GetComponent<TankGunController>().StopFiringWhenPlayerDies();
             }
             GetComponent<PlayerGun>().StopFiring();
             Die();
             return;
         }
-        OnPlayerHit?.Invoke(gameObject,dmg);
+        OnPlayerHit?.Invoke(gameObject, dmg);
+        OnHealthChanged?.Invoke(gameObject, m_currentHealth, startingHealth);
     }
 
     private void Die()

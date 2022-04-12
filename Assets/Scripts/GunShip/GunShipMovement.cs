@@ -21,6 +21,8 @@ public class GunShipMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+            return;
         if ((transform.position.y - player.transform.position.y < maximumYSeperationBetweenPlayerAndShip))
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, maximumYSeperationBetweenPlayerAndShip, transform.position.z), Time.deltaTime * 0.5f);

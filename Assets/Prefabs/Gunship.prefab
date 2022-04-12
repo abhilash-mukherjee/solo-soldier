@@ -999,7 +999,7 @@ MonoBehaviour:
   xRotationMultiplier: 5
   hitForce: 0.1
   updateCallsToAchieveSmoothHitAnimation: 60
-  startingHealth: 20
+  startingHealth: 30
 --- !u!114 &5461893137084353911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1026,3 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c64111578b45746a76fd1a12bb0511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_uID: 
+  m_health: 0
+  m_position: {x: 0, y: 0, z: 0}
+  m_rotation: {x: 0, y: 0, z: 0, w: 0}

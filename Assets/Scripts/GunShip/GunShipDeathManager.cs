@@ -11,6 +11,8 @@ public class GunShipDeathManager : MonoBehaviour
 
     public delegate void GunShipDeathHandler();
     public static event GunShipDeathHandler OnGunShipDied;
+    public delegate void DeathHandler(GameObject _gameObject);
+    public static event DeathHandler OnDied;
     void OnEnable()
     {
         GunShipHealth.OnGunShipDied += DestroyGunShip;
@@ -32,5 +34,6 @@ public class GunShipDeathManager : MonoBehaviour
         yield return new WaitForSeconds(explosionTime);
         Destroy(gameObject);
         OnGunShipDied?.Invoke();
+        OnDied?.Invoke(gameObject);
     }
 }

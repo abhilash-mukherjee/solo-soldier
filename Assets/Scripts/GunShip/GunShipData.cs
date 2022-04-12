@@ -25,6 +25,7 @@ public class GunShipData : CharacterData, ISavable
                         gameObject.GetComponent<GunShipHealth>().CurrentHealth = _characterData.m_health;
                         if (_characterData.m_health == 0)
                         {
+                            gameObject.SetActive(false);
                             Destroy(gameObject);
                             Debug.Log($"{gameObject.name } destroyed");
                         }

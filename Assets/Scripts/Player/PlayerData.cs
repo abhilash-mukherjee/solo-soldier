@@ -29,7 +29,7 @@ public class PlayerData : CharacterData, ISavable
                         if (_characterData.m_health == 0)
                         {
                             Destroy(gameObject);
-                            Debug.Log($"{gameObject.name } destroyed");
+                            Debug.Log($"{this.m_uID } destroyed");
                         }
                     }
                     transform.SetPositionAndRotation(_characterData.m_position, _characterData.m_rotation);
@@ -45,20 +45,22 @@ public class PlayerData : CharacterData, ISavable
     {
         if (sd.m_characterDataStructList != null)
         {
-            foreach (SaveData.CharacterDataStruct _data in sd.m_characterDataStructList)
+            var _character = sd.m_characterDataStructList.Find(_character => _character.m_uID == m_uID);
+            if (_character.m_uID == "")
             {
-                if (_data.m_uID == this.m_uID)
-                {
-                    sd.m_characterDataStructList.Remove(_data);
-                    var _characterData = GetCharacterDataStruct();
-                    sd.m_characterDataStructList.Add(_characterData);
-                    return;
-                }
+                var _newCharacterData = GetCharacterDataStruct();
+                sd.m_characterDataStructList.Add(_newCharacterData);
+                Debug.Log($"Added {_newCharacterData.m_uID}");
+            }
+            else
+            {
+                Debug.Log($"Removed {_character.m_uID} and the current health of player is: {this.m_health}");
+                sd.m_characterDataStructList.Remove(_character);
+                var _characterData = GetCharacterDataStruct();
+                sd.m_characterDataStructList.Add(_characterData);
+                return;
             }
         }
-
-        var _newCharacterData = GetCharacterDataStruct();
-        sd.m_characterDataStructList.Add(_newCharacterData);
         //UpdateDeletedDataStructList(sd);
     }
     public void LoadFromSaveDataClone(SaveData sd)
@@ -103,10 +105,10 @@ public class PlayerData : CharacterData, ISavable
         m_rotation = transform.rotation;
         SaveData.CharacterDataStruct _newCharacterData = new SaveData.CharacterDataStruct
         {
-            m_health = m_health,
-            m_position = m_position,
-            m_rotation = m_rotation,
-            m_uID = m_uID
+            m_health = this.m_health,
+            m_position = this.m_position,
+            m_rotation =this. m_rotation,
+            m_uID = this.m_uID
         };
         return _newCharacterData;
     }

@@ -73,8 +73,9 @@ public class TankHealth : MonoBehaviour
         _explosion.transform.localScale = destroyParticleScale;
         AudioManager.Instance.PlaySoundOneShot("TankDestroy");
         GetComponent<TankGunController>().StopFiringWhenTankDies();
-        Destroy(gameObject);
         OnTankDied?.Invoke();
-        OnDied?.Invoke(gameObject);    
+        OnDied?.Invoke(gameObject);
+        Debug.Log("Tank died");
+        Destroy(gameObject);
     }
 }

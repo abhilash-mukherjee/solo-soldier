@@ -49,6 +49,8 @@ public class GunShipGun : MonoBehaviour
     
     void Update()
     {
+        if (player == null)
+            return;
         if (shouldFire == false)
             return;
         timer += Time.deltaTime;
@@ -70,7 +72,7 @@ public class GunShipGun : MonoBehaviour
     {
         animator.Play("GunshipFire");
         StartCoroutine(PlaySoundAndShootParticles(timeDelayBetweenFireAnimationStartAndSoundPlay));
-
+        StartCoroutine(FireAfterPause(timeDelayBetweenFireAnimationStartAndSoundPlay + timeDelayBetweenSoundPlayAndGunHit));
     }
     
     IEnumerator PlaySoundAndShootParticles(float time)
@@ -78,39 +80,43 @@ public class GunShipGun : MonoBehaviour
         yield return new WaitForSeconds(time);
         ParticleSystem muzzleFlash = Instantiate(muzzleParticles, gunMuzzlePoint.transform.position, gunMuzzlePoint.transform.rotation);
         AudioManager.Instance.PlaySound("GunShipFire");
-        StartCoroutine(FireAfterPause(timeDelayBetweenSoundPlayAndGunHit));
     }
     IEnumerator FireAfterPause(float time)
     {
         yield return new WaitForSeconds(time);
         Ray ray = new Ray(firePoint.transform.position, gameObject.transform.forward * maxFireDistance);
         Debug.DrawRay(ray.origin, ray.direction * 50, Color.red, 2f);
-        RaycastHit[] m_hitInfo;
-        m_hitInfo = Physics.RaycastAll(ray,maxFireDistance, LayerMask.GetMask("Player"));
-        if (m_hitInfo.Length == 0)
+        RaycastHit m_hitInfo;
+        if(Physics.Raycast(ray,out m_hitInfo, maxFireDistance,LayerMask.GetMask("Player", "Environment")))
         {
-            Debug.Log("Hit Nothing");
-            yield return null;
-        }
-        else if (m_hitInfo[0].collider.gameObject.CompareTag("Player"))
-        {
-            var hitCollider = m_hitInfo[0].collider;
-            var playerHealth = hitCollider.gameObject.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+
+            if (m_hitInfo.collider.gameObject.CompareTag("Player"))
             {
-                playerHealth.TakeDamage(damage);
+                Debug.Log("Player hit");
+                var hitCollider = m_hitInfo.collider;
+                var playerHealth = hitCollider.gameObject.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damage);
+                }
+            }
+            else if (m_hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Environment"))
+            {
+                Debug.Log($"Raycast hits {m_hitInfo.collider.gameObject}");
+                GameObject _hitObject = m_hitInfo.collider.gameObject;
+
+                if (_hitObject.GetComponent<Destructible>() != null)
+                {
+                    OnEnvironmentHit?.Invoke(_hitObject, m_hitInfo.point, hitForce * ray.direction);
+                    Debug.Log("Destructible is Hit : " + _hitObject);
+                }
+            }
+            else
+            {
+                Debug.Log($"Raycast hits {m_hitInfo.collider.gameObject}");
             }
         }
-        else if (m_hitInfo[0].collider.gameObject.layer == LayerMask.NameToLayer("Environment"))
-        {
-            GameObject _hitObject = m_hitInfo[0].collider.gameObject;
-            
-            if(_hitObject.GetComponent<Destructible>() != null)
-            {
-                OnEnvironmentHit?.Invoke(_hitObject, m_hitInfo[0].point, hitForce * ray.direction);
-                Debug.Log("Destructible is Hit : " + _hitObject);
-            }
-        }
+        
     }
 
 }

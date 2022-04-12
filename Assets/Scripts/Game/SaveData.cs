@@ -10,6 +10,7 @@ public class SaveData
     public int m_highestLevelAchieved;
     public string m_levelPlayedWhileQuitting;
     public bool m_isKeySpawnned;
+    public float m_gunShipTimer;
     [System.Serializable]
     public struct CharacterDataStruct
     {

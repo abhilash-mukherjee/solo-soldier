@@ -14,12 +14,19 @@ public class PlayerMovement : MonoBehaviour
     private float backwardSpeed = 100f;
     [SerializeField]
     private float turnSpeed = 200f;
+    [SerializeField]
+    private BoolVariable isGamePaused;
     private bool shouldMove = true;
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        LockCursor();
+    }
+
+    private static void LockCursor()
+    {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -27,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerHealth.OnDied += UnlockCursor;
         GameManager.OnKeyCollected += UnlockCursor;
+        isGamePaused.Value = false;
     }
     private void OnDisable()
     {
@@ -54,9 +62,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGamePaused.Value == true) UnlockCursor();
+        else LockCursor();
         if (shouldMove == false)
             return;
         float aim = Input.GetAxis("Mouse X");
+        Debug.Log("Aim = " + aim);
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
         Vector3 movement = new Vector3(horizontal, 0, vertical);
@@ -81,3 +92,5 @@ public class PlayerMovement : MonoBehaviour
             return false;
     }
 }
+
+

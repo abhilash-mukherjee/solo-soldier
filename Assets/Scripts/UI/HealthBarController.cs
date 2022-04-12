@@ -30,13 +30,13 @@ public class HealthBarController : MonoBehaviour
         {
             healthSlider.maxValue = _startingHealth;
             healthSlider.value = _CurrentHealth;
-            healthText.text = ((float)_CurrentHealth *100f / (float)_startingHealth).ToString() + "%";
+            healthText.text = ((int)((float)_CurrentHealth *100f / (float)_startingHealth)).ToString() + "%";
         }
         if(_gameObject == transform.parent.gameObject && transform.parent.gameObject.CompareTag("Enemy"))
         {
             healthSlider.maxValue = _startingHealth;
             healthSlider.value = _CurrentHealth;
-            healthText.text = ((float)_CurrentHealth *100f / (float)_startingHealth).ToString() + "%";
+            healthText.text = ((int)((float)_CurrentHealth *100f / (float)_startingHealth)).ToString() + "%";
         }
 
         else if(_gameObject.transform.parent != null)
@@ -45,7 +45,7 @@ public class HealthBarController : MonoBehaviour
             {
                 healthSlider.maxValue = _startingHealth;
                 healthSlider.value = _CurrentHealth;
-                healthText.text = ((float)_CurrentHealth * 100f / (float)_startingHealth).ToString() + "%";
+                healthText.text = ((int)((float)_CurrentHealth * 100f / (float)_startingHealth)).ToString() + "%";
             }
         }
         
@@ -53,7 +53,7 @@ public class HealthBarController : MonoBehaviour
         {
             healthSlider.maxValue = _startingHealth;
             healthSlider.value = _CurrentHealth;
-            healthText.text = ((float)_CurrentHealth * 100f / (float)_startingHealth).ToString() + "%";
+            healthText.text = ((int)((float)_CurrentHealth * 100f / (float)_startingHealth)).ToString() + "%";
         }
     }
 }

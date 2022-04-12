@@ -11,7 +11,7 @@ public class PlayerGun : MonoBehaviour
     [Range(0.5f, 1.5f)]
     private float fireRate = 0.3f;
     [SerializeField]
-    [Range(1, 10)]
+    [Range(1, 20)]
     private int damage =1;
     [SerializeField]
     private float hitForce = 50f;
@@ -111,4 +111,5 @@ public class PlayerGun : MonoBehaviour
     {
         GetComponent<PlayerMovement>().StopPlayerMovement();
     }
+
 }

@@ -46,7 +46,7 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: 84ab05c8218d3e849beed4939bad971c, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 1.24
     loop: 0
     name: Fire
     source: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 97e91245a9ea3ea44ad46841b17d77fa, type: 3}
     volume: 0.2
     pitch: 1.2
-    loop: 0
+    loop: 1
     name: helicopter
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 2e1f67d015c10d748a960a3f440ef2eb, type: 3}
@@ -176,3 +176,16 @@ MonoBehaviour:
     loop: 0
     name: GrenadePick
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a4a9327e98855524c846cc8e2f559e96, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    name: PowerUp
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 651c8f43287b82145b2cc6bac5640b50, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    name: Battle Music
+    source: {fileID: 0}
+  backgroundMusicName: Battle Music

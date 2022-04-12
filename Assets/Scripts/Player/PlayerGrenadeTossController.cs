@@ -57,7 +57,6 @@ public class PlayerGrenadeTossController : MonoBehaviour
             {
                 if(GetComponent<PlayerGrenadeCounter>().GrenadeCount > 0)
                 {
-                    timer = 0;
                     TossGrenade();
                 }
             }
@@ -121,6 +120,7 @@ public class PlayerGrenadeTossController : MonoBehaviour
             ApplyForce(grenadeTossPoint.transform.position + 100 * _ray.direction);
             m_Grenade = null;
             m_shouldReleaseGrenade = false;
+            timer = 0;
         }
         else
         {
@@ -128,6 +128,7 @@ public class PlayerGrenadeTossController : MonoBehaviour
             ApplyForce(_grenadeTarget);
             m_Grenade = null;
             m_shouldReleaseGrenade = false;
+            timer = 0;
         }
         OnGrenadeTossed?.Invoke();
     }

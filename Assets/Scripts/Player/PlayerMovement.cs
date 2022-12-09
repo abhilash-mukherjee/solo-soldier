@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private float turnSpeed = 200f;
     [SerializeField]
     private BoolVariable isGamePaused;
+    [SerializeField] private IntVariable currentPlayerrHealth;
+
     private bool shouldMove = true;
 
     void Awake()
@@ -62,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGamePaused.Value == true) UnlockCursor();
+        if (isGamePaused.Value == true || currentPlayerrHealth.Value <= 0) UnlockCursor();
         else LockCursor();
         if (shouldMove == false)
             return;

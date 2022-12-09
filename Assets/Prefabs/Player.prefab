@@ -644,7 +644,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 600
   backwardSpeed: 200
-  turnSpeed: 400
+  turnSpeed: 100
+  isGamePaused: {fileID: 11400000, guid: a4249fac27446df41bc83590615236e2, type: 2}
+  currentPlayerrHealth: {fileID: 11400000, guid: 5b02d52433b18a54f9b9aff2ca57fa79, type: 2}
 --- !u!114 &3644489802828998857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,6 +694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
+  currentHealth: {fileID: 11400000, guid: 5b02d52433b18a54f9b9aff2ca57fa79, type: 2}
 --- !u!114 &3644489802828998854
 MonoBehaviour:
   m_ObjectHideFlags: 0

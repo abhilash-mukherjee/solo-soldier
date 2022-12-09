@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0.41, y: 2.54, z: -4.03}
-  m_XDamping: 1
+  m_XDamping: 0.5
   m_YDamping: 1
   m_ZDamping: 1
   m_AngularDampingMode: 0
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2236ca7887144dd4bafc9b76c5279642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensetivity: 60
+  sensetivity: 10
   maxYCamera: 7
   minYCamera: -1
 --- !u!4 &1468197333 stripped
@@ -1694,7 +1694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3644489802828998860, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
       propertyPath: turnSpeed
-      value: 400
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3644489802828998860, guid: 08c74c3dd836b2a48a512228325c6fb3, type: 3}
       propertyPath: forwardSpeed

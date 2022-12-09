@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public static event GrenadeCountHandler OnDied_GrenadeCount;
     [SerializeField]
     private int startingHealth = 10;
+    [SerializeField] private IntVariable currentHealth;
     private int m_currentHealth;
     [HideInInspector]
     public int CurrentHealth
@@ -43,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         m_currentHealth = startingHealth;
+        currentHealth.Value = startingHealth;
     }
     private void Start()
     {
@@ -60,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
             GetComponent<PlayerGun>().StopFiring();
         }
         m_currentHealth -= dmg;
-        
+        currentHealth.Value = m_currentHealth;
         if (m_currentHealth <= 0)
         {
             GetComponent<PlayerMovement>().StopPlayerMovement();

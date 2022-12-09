@@ -160,7 +160,9 @@ public class GameManager : MonoBehaviour, ISavable
     }
     private void LoadGameOver()
     {
+        Debug.Log("Cursor Unlocked");
         isLastBattleWon = false;
+        UnlockCursor();
         Debug.Log("GameOver");
         CacheLevelData();
         OnGameOver?.Invoke();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GamePauser : MonoBehaviour
 {
@@ -21,9 +22,12 @@ public class GamePauser : MonoBehaviour
     public void PauseGame()
     {
         isGamePaused.Value = true;
-        Time.timeScale = 0f;
-        pauseButton.SetActive(false);
-        resumePanel.SetActive(true);
+
+            Time.timeScale = 0f;
+            pauseButton.SetActive(false);
+            resumePanel.SetActive(true);
+
+        
     }
     public void ResumeGame()
     {
@@ -35,6 +39,11 @@ public class GamePauser : MonoBehaviour
 
     public void QuitGame()
     {
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
         Application.Quit();
     }
 

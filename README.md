@@ -1,9 +1,12 @@
 <h1>Solo Soldier</h1>
     <h2>Controls</h2>
-    
+    <ul>
+    <li>Move With Up-Down Arrow</li>
+    <li>Rotate with mouse</li>
+    <li>Shoot with left mouse click</li>
+    <li>Throw grenade with right mouse click</li>
 
-<p>Move With Up-Down Arrow, Rotate with mouse, Shoot with left mouse click, Throw grenae with right mouse click
-</p> 
+</ul>
 
 <h3>Links</h3>
 <ul>
